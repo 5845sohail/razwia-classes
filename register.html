@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Razwia Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --red: #ef4444;
+            --green: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
+                        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .auth-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .divider-text {
+            padding: 0 12px;
+            color: var(--gray);
+            font-size: 12px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-google {
+            background-color: white;
+            color: #111827;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .btn-google:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.2s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .phone-input {
+            display: flex;
+        }
+        
+        .country-code {
+            width: 100px;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px 0 0 8px;
+            background-color: var(--light-gray);
+            font-size: 14px;
+        }
+        
+        .phone-number {
+            flex: 1;
+            border-radius: 0 8px 8px 0;
+            padding-left: 12px;
+        }
+        
+        .password-strength {
+            margin-top: 8px;
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background-color 0.3s;
+        }
+        
+        .strength-weak {
+            width: 33%;
+            background-color: var(--red);
+        }
+        
+        .strength-medium {
+            width: 66%;
+            background-color: #f59e0b;
+        }
+        
+        .strength-strong {
+            width: 100%;
+            background-color: var(--green);
+        }
+        
+        .strength-text {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+        
+        .error-message {
+            color: var(--red);
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .success-message {
+            color: var(--green);
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .otp-container {
+            display: none;
+            margin-top: 20px;
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        
+        .otp-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .otp-resend {
+            font-size: 13px;
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .otp-resend a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo">
+            <img src="/assets/image/new logo_page-0001.jpeg" alt="Razwia Classes">
+        </div>
+        
+        <h1>Create your account</h1>
+        <p class="subtitle">Join thousands of students achieving their dreams</p>
+        
+        <button class="btn btn-google" id="googleSignUp">
+            <i class="fab fa-google"></i> Continue with Google
+        </button>
+        
+        <div class="divider">
+            <span class="divider-text">OR</span>
+        </div>
+        
+        <form id="signupForm">
+            <div class="success-message" id="successMessage">
+                Registration Complete! You can now Sign In.
+            </div>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+                <div class="error-message" id="nameError">Please enter your full name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <div class="phone-input">
+                    <select class="country-code" id="countryCode">
+                        <option value="+1">+1 (US)</option>
+                        <option value="+91" selected>+91 (IN)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+61">+61 (AU)</option>
+                    </select>
+                    <input type="tel" class="phone-number" id="phoneNumber" placeholder="Enter phone number" required>
+                </div>
+                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Create Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" placeholder="Create password (min 8 characters)" required>
+                </div>
+                <div class="password-strength">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                <div class="strength-text" id="strengthText">Password strength</div>
+                <div class="error-message" id="passwordError">Password must be at least 8 characters with numbers and symbols</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+            </div>
+            
+            <button type="button" class="btn btn-primary" id="sendOtpBtn">Send OTP</button>
+            
+            <div class="otp-container" id="otpContainer">
+                <p style="text-align: center; margin-bottom: 15px; font-size: 14px;">We've sent a 6-digit OTP to <span id="otpPhoneNumber"></span></p>
+                
+                <div class="otp-inputs">
+                    <input type="text" class="otp-input" maxlength="1" data-index="0">
+                    <input type="text" class="otp-input" maxlength="1" data-index="1">
+                    <input type="text" class="otp-input" maxlength="1" data-index="2">
+                    <input type="text" class="otp-input" maxlength="1" data-index="3">
+                    <input type="text" class="otp-input" maxlength="1" data-index="4">
+                    <input type="text" class="otp-input" maxlength="1" data-index="5">
+                </div>
+                
+                <div class="otp-resend">
+                    Didn't receive code? <a href="#" id="resendOtp">Resend OTP</a>
+                    <span id="otpTimer"></span>
+                </div>
+                
+                <button type="button" class="btn btn-primary" id="verifyOtpBtn" style="margin-top: 20px;">Verify & Register</button>
+            </div>
+        </form>
+        
+        <div class="login-link">
+            Already have an account? <a href="login.html">Sign In here</a>
+        </div>
+    </div>
+
+    <script>
+        // Password strength indicator
+        const passwordInput = document.getElementById('password');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 8) strength += 1;
+            if (password.length >= 12) strength += 1;
+            
+            // Contains numbers
+            if (/\d/.test(password)) strength += 1;
+            
+            // Contains special chars
+            if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 1;
+            
+            // Contains both uppercase and lowercase
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 1;
+            
+            // Update strength bar
+            strengthBar.className = 'strength-bar';
+            
+            if (password.length === 0) {
+                strengthBar.style.width = '0%';
+                strengthText.textContent = 'Password strength';
+            } else if (strength <= 2) {
+                strengthBar.classList.add('strength-weak');
+                strengthText.textContent = 'Weak password';
+                strengthText.style.color = 'var(--red)';
+            } else if (strength <= 4) {
+                strengthBar.classList.add('strength-medium');
+                strengthText.textContent = 'Medium strength';
+                strengthText.style.color = '#f59e0b';
+            } else {
+                strengthBar.classList.add('strength-strong');
+                strengthText.textContent = 'Strong password';
+                strengthText.style.color = 'var(--green)';
+            }
+        });
+        
+        // OTP functionality
+        const sendOtpBtn = document.getElementById('sendOtpBtn');
+        const otpContainer = document.getElementById('otpContainer');
+        const otpPhoneNumber = document.getElementById('otpPhoneNumber');
+        const resendOtp = document.getElementById('resendOtp');
+        const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+        const otpTimer = document.getElementById('otpTimer');
+        const successMessage = document.getElementById('successMessage');
+        
+        sendOtpBtn.addEventListener('click', function() {
+            // Validate form first
+            if (!validateForm()) return;
+            
+            // Show OTP container
+            otpContainer.style.display = 'block';
+            const countryCode = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phoneNumber').value;
+            otpPhoneNumber.textContent = countryCode + ' ' + phone;
+            
+            // Disable send OTP button
+            sendOtpBtn.disabled = true;
+            sendOtpBtn.textContent = 'OTP Sent';
+            
+            // Start OTP timer (5 minutes)
+            startOtpTimer();
+            
+            // In a real app, you would send the OTP to the user's phone here
+            console.log('OTP sent to phone:', countryCode + phone);
+        });
+        
+        resendOtp.addEventListener('click', function(e) {
+            e.preventDefault();
+            startOtpTimer();
+            // In a real app, you would resend the OTP here
+            console.log('Resending OTP...');
+        });
+        
+        verifyOtpBtn.addEventListener('click', function() {
+            // Get OTP from inputs
+            const otpInputs = document.querySelectorAll('.otp-input');
+            let otp = '';
+            otpInputs.forEach(input => otp += input.value);
+            
+            // Simple validation - in real app you would verify with server
+            if (otp.length === 6) {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Hide OTP container
+                otpContainer.style.display = 'none';
+                
+                // In a real app, you would submit the form to your server here
+                console.log('OTP verified:', otp);
+                
+                // Redirect to sign in page after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'signin.html';
+                }, 3000);
+            } else {
+                alert('Please enter a valid 6-digit OTP');
+            }
+        });
+        
+        function startOtpTimer() {
+            let timeLeft = 300; // 5 minutes in seconds
+            
+            otpTimer.textContent = ` (${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60})`;
+            resendOtp.style.pointerEvents = 'none';
+            resendOtp.style.opacity = '0.5';
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                
+                otpTimer.textContent = ` (${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60})`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    otpTimer.textContent = '';
+                    resendOtp.style.pointerEvents = 'auto';
+                    resendOtp.style.opacity = '1';
+                }
+            }, 1000);
+        }
+        
+        // OTP input auto-focus
+        document.querySelectorAll('.otp-input').forEach(input => {
+            input.addEventListener('input', function() {
+                const nextIndex = parseInt(this.dataset.index) + 1;
+                const nextInput = document.querySelector(`.otp-input[data-index="${nextIndex}"]`);
+                
+                if (this.value.length === 1 && nextInput) {
+                    nextInput.focus();
+                }
+            });
+            
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0) {
+                    const prevIndex = parseInt(this.dataset.index) - 1;
+                    const prevInput = document.querySelector(`.otp-input[data-index="${prevIndex}"]`);
+                    
+                    if (prevInput) {
+                        prevInput.focus();
+                    }
+                }
+            });
+        });
+        
+        // Google Sign-In
+        document.getElementById('googleSignUp').addEventListener('click', function() {
+            // In a real app, you would implement Google OAuth here
+            console.log('Google Sign-In clicked');
+            
+            // Simulate successful Google sign-in
+            setTimeout(() => {
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            }, 1000);
+        });
+        
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('fullName').value;
+            if (name.trim() === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phoneNumber').value;
+            if (!/^\d{10,15}$/.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+            
+            // Validate password
+            const password = document.getElementById('password').value;
+            if (password.length < 8 || !/\d/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+            
+            // Validate confirm password
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (confirmPassword !== password) {
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+            
+            return isValid;
+        }
+    </script>
+</body>
+</html>

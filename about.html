@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Razwia Classes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .feature-card {
+            border-radius: 10px;
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        .team-img {
+            height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <h2 class="m-0 text-primary"><i class="fas fa-graduation-cap me-2"></i>Razwia Classes</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">About Razwia Classes</h1>
+                    <p class="lead mb-4">Empowering students to achieve academic excellence through personalized coaching and innovative learning solutions.</p>
+                    <a href="register.html" class="btn btn-light btn-lg">Join Us Today</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://www.iaret.org/images/a1.jpg" 
+                         alt="Learning Environment" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Mission</h2>
+                <p class="text-muted">Committed to shaping futures</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <p class="lead mb-4">At Razwia Classes, our mission is to provide high-quality, personalized education that empowers students to excel in competitive exams like JEE, NEET, and CBSE boards. We combine expert faculty, comprehensive study materials, and innovative teaching methods to ensure every student reaches their full potential.</p>
+                    <p class="text-muted">Founded in 2015, we have grown to become a trusted name in education, with over 5,000 students and 500+ selections in top competitive exams annually.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://www.techniqueedu.com/assets/uploads/about_us/vission/016290300_1536151571.png" 
+                         class="img-fluid rounded" alt="Mission" style="max-height: 300px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Vision -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Vision</h2>
+                <p class="text-muted">Inspiring a generation of learners</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                         class="img-fluid rounded" alt="Vision" style="max-height: 300px;">
+                </div>
+                <div class="col-lg-6">
+                    <p class="lead mb-4">Our vision is to revolutionize education by creating a dynamic, inclusive learning environment that fosters curiosity, critical thinking, and lifelong learning. We aim to be the leading coaching institute in India, recognized for transforming students into confident, successful individuals ready to tackle global challenges.</p>
+                    <p class="text-muted">Through cutting-edge technology and a student-centric approach, we aspire to make quality education accessible to all, bridging gaps and building brighter futures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Meet Our Expert Faculty</h2>
+                <p class="text-muted">Guiding students to success with expertise and dedication</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 feature-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top team-img" alt="Faculty">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Dr. Amit Kumar</h5>
+                            <p class="text-primary">Physics Expert</p>
+                            <p class="card-text">IIT Delhi alumnus with 12 years of teaching experience for JEE Advanced.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 feature-card">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top team-img" alt="Faculty">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Neha Sharma</h5>
+                            <p class="text-primary">Chemistry Expert</p>
+                            <p class="card-text">NIT Surathkal graduate with specialization in Organic Chemistry.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 feature-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top team-img" alt="Faculty">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Rajesh Iyer</h5>
+                            <p class="text-primary">Mathematics Expert</p>
+                            <p class="card-text">IIT Bombay graduate with 8 years of experience in competitive exam coaching.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why Choose Razwia Classes?</h2>
+                <p class="text-muted">Trusted by 5,000+ students across the region</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card h-100 p-4">
+                        <div class="text-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                                 class="rounded-circle" width="100" height="100" alt="Faculty">
+                        </div>
+                        <h4 class="text-center mb-3">Expert Faculty</h4>
+                        <p class="text-center text-muted">Learn from IIT/NIT alumni with 10+ years of teaching experience.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100 p-4">
+                        <div class="text-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                                 class="rounded" width="100" height="100" alt="Study Materials">
+                        </div>
+                        <h4 class="text-center mb-3">Comprehensive Material</h4>
+                        <p class="text-center text-muted">Structured study material with practice questions and solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100 p-4">
+                        <div class="text-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                                 class="rounded" width="100" height="100" alt="Success">
+                        </div>
+                        <h4 class="text-center mb-3">Proven Results</h4>
+                        <p class="text-center text-muted">500+ selections in JEE/NEET last year with 90% success rate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Ready to Start Your Journey?</h2>
+            <p class="lead mb-5">Join Razwia Classes and take the first step toward academic success.</p>
+            <a href="register.html" class="btn btn-light btn-lg px-5">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h2 class="m-0 text-white mb-3"><i class="fas fa-graduation-cap me-2"></i>Razwia Classes</h2>
+                    <p>Premier coaching institute dedicated to helping students achieve academic excellence through personalized learning.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Courses</a></li>
+                        <li class="mb-2"><a href="study-material.html" class="text-white-50">Study Material</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Courses</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">JEE Main & Advanced</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">NEET UG</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">CBSE Classes 9-12</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Olympiad Preparation</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Crash Courses</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Gomoh, Dhanbad, Learning City</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +91 9934341106</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@razwiaclasses.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 8AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-white-50">© 2023 Razwia Classes. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-white-50">
+                        <a href="#" class="text-white-50">Privacy Policy</a> | 
+                        <a href="#" class="text-white-50">Terms of Service</a> | 
+                        <a href="#" class="text-white-50">Refund Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <a href="https://wa.me/919934341106" class="btn btn-success rounded-circle p-3" target="_blank">
+            <i class="fab fa-whatsapp fs-4"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

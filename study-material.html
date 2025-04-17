@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Razwia Classes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .course-card {
+            border-radius: 10px;
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .nav-tabs .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+        
+        .rating i {
+            color: #fbbc05;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <h2 class="m-0 text-primary"><i class="fas fa-graduation-cap me-2"></i>Razwia Classes</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Download Your Favourite Study Material</h1>
+                    <p class="lead mb-4">Explore our subject-wise coaching programs for Class 11 and Class 12, designed for CBSE, JAC, and ICSE boards.</p>
+                    <a href="#courses" class="btn btn-light btn-lg">View Material</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://freebiehive.com/wp-content/uploads/2024/05/Download-Icon-PNG.jpg" 
+                         alt="Students Learning" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="py-5 bg-light" id="courses">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Subject-Wise Coaching Programs</h2>
+                <p class="text-muted">Tailored courses for Class 11 and Class 12 students</p>
+            </div>
+            <!-- Tabs for Class Filter -->
+            <ul class="nav nav-tabs justify-content-center mb-4" id="classTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="class11-tab" data-bs-toggle="tab" href="#class11" role="tab">Class 11</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="class12-tab" data-bs-toggle="tab" href="#class12" role="tab">Class 12</a>
+                </li>
+            </ul>
+            <!-- Tab Content -->
+            <div class="tab-content" id="classTabContent">
+                <!-- Class 11 Courses -->
+                <div class="tab-pane fade show active" id="class11" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Physics Class 11 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-atom course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 11 Physics</h5>
+                                <p class="card-text text-muted text-center">Mechanics, Thermodynamics, Waves, and more.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹9,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span class="text-muted small"> (4.2)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chemistry Class 11 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-flask course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 11 Chemistry</h5>
+                                <p class="card-text text-muted text-center">Organic, Inorganic, Physical Chemistry basics.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹9,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span class="text-muted small"> (4.5)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mathematics Class 11 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-calculator course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 11 Mathematics</h5>
+                                <p class="card-text text-muted text-center">Algebra, Trigonometry, Coordinate Geometry.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹9,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span class="text-muted small"> (4.0)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Biology Class 11 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-microscope course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 11 Biology</h5>
+                                <p class="card-text text-muted text-center">Cell Biology, Plant & Animal Physiology.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹9,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span class="text-muted small"> (4.8)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Class 12 Courses -->
+                <div class="tab-pane fade" id="class12" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Physics Class 12 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-atom course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 12 Physics</h5>
+                                <p class="card-text text-muted text-center">Electromagnetism, Optics, Modern Physics.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹10,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span class="text-muted small"> (4.3)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chemistry Class 12 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-flask course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 12 Chemistry</h5>
+                                <p class="card-text text-muted text-center">Electrochemistry, Polymers, Biomolecules.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹10,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span class="text-muted small"> (4.6)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mathematics Class 12 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-calculator course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 12 Mathematics</h5>
+                                <p class="card-text text-muted text-center">Calculus, Probability, Linear Programming.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹10,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span class="text-muted small"> (4.1)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Biology Class 12 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card course-card p-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-microscope course-icon"></i>
+                                </div>
+                                <h5 class="card-title text-center">Class 12 Biology</h5>
+                                <p class="card-text text-muted text-center">Genetics, Ecology, Human Physiology.</p>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                    <li><strong>Duration:</strong> 1 Year</li>
+                                    <li><strong>Mode:</strong> Offline, Online Material</li>
+                                    <li><strong>Price:</strong> ₹10,999/year</li>
+                                </ul>
+                                <div class="rating text-center mb-3">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span class="text-muted small"> (4.9)</span>
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                    <a href="#enroll" class="btn btn-primary btn-sm">Enroll Now</a>
+                                    <a href="payment.html" class="btn btn-outline-secondary btn-sm">Buy Material</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                    <a href="#compare" class="text-muted small">Compare</a> | 
+                                    <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Ready to Excel in Your Studies?</h2>
+            <p class="lead mb-5">Join Razwia Classes and start your journey to academic success today.</p>
+            <a href="register.html" class="btn btn-light btn-lg px-5">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h2 class="m-0 text-white mb-3"><i class="fas fa-graduation-cap me-2"></i>Razwia Classes</h2>
+                    <p>Premier coaching institute dedicated to helping students achieve academic excellence through personalized learning.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Courses</a></li>
+                        <li class="mb-2"><a href="study-material.html" class="text-white-50">Study Material</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Courses</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">JEE Main & Advanced</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">NEET UG</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">CBSE Classes 9-12</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Olympiad Preparation</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Crash Courses</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Education St, Learning City</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +91 9876543210</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@razwiaclasses.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 8AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-white-50">© 2023 Razwia Classes. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-white-50">
+                        <a href="#" class="text-white-50">Privacy Policy</a> | 
+                        <a href="#" class="text-white-50">Terms of Service</a> | 
+                        <a href="#" class="text-white-50">Refund Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <a href="https://wa.me/919876543210" class="btn btn-success rounded-circle p-3" target="_blank">
+            <i class="fab fa-whatsapp fs-4"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

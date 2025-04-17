@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Razwia Classes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .course-card {
+            border-radius: 10px;
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .sticky-enroll {
+            position: sticky;
+            bottom: 20px;
+            z-index: 1000;
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .rating i {
+            color: #fbbc05;
+        }
+        
+        .filter-btn {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .search-bar {
+            max-width: 400px;
+        }
+
+        /* Modal Styles (Register & Login) */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            animation: slideIn 0.3s ease-in-out;
+        }
+        
+        .modal-backdrop {
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+        
+        .modal-header .btn-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .google-btn {
+            background-color: white;
+            border: 1px solid #dadce0;
+            color: #3c4043;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .google-btn:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .phone-btn {
+            background-color: var(--light-blue);
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .phone-btn:hover {
+            background-color: #d2e3fc;
+        }
+        
+        .otp-section {
+            display: none;
+        }
+        
+        .country-code {
+            width: 100px;
+        }
+        
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <h2 class="m-0 text-primary"><i class="fas fa-graduation-cap me-2"></i>Razwia Classes</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Explore Our Courses</h1>
+                    <p class="lead mb-4">Discover our comprehensive programs for Class 11, Class 12, JEE, NEET, and Computer Science.</p>
+                    <a href="#courses" class="btn btn-light btn-lg">View All Courses</a>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="py-5 bg-light" id="courses">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Programs</h2>
+                <p class="text-muted">Tailored courses for academic excellence and competitive exam preparation</p>
+            </div>
+            <!-- Search and Filter -->
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                <div class="search-bar mb-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search courses...">
+                </div>
+                <div class="filter-buttons mb-3">
+                    <button class="btn btn-outline-primary filter-btn" data-filter="all">All</button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="class11">Class 11</button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="class12">Class 12</button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="entrance">Entrance Exams</button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="computerscience">Computer Science</button>
+                </div>
+            </div>
+            <!-- Course Grid -->
+            <form id="enrollForm" action="/register" method="POST">
+                <div class="row g-4" id="courseGrid">
+                    <!-- Class 11 Biology -->
+                    <div class="col-md-6 col-lg-3 course-item" data-category="class11">
+                        <div class="card course-card p-4">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-microscope course-icon"></i>
+                            </div>
+                            <h5 class="card-title text-center">Class 11 Biology</h5>
+                            <p class="card-text text-muted text-center">Cell Biology, Plant & Animal Physiology.</p>
+                            <ul class="list-unstyled text-muted small">
+                                <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                <li><strong>Duration:</strong> 1 Year</li>
+                                <li><strong>Mode:</strong> Offline, Online Material</li>
+                                <li><strong>Price:</strong> ₹9,999/year</li>
+                            </ul>
+                            <div class="rating text-center mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span class="text-muted small"> (4.8)</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                <a href="#preview" class="btn btn-outline-primary btn-sm">Preview</a>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Enroll Now</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm buy-material" data-course="Class 11 Biology" data-amount="999900" data-currency="INR">Buy Material</button>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="#syllabus" class="text-muted small">View Syllabus</a> | 
+                                <a href="#compare" class="text-muted small">Compare</a> | 
+                                <a href="#bookmark" class="text-muted small"><i class="far fa-bookmark"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Class 11 Science -->
+                    <div class="col-md-6 col-lg-4 course-item" data-category="class11">
+                        <div class="card course-card p-4">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-atom course-icon"></i>
+                            </div>
+                            <h5 class="card-title text-center">Class 11 - Science Stream</h5>
+                            <p class="card-text text-muted text-center">Comprehensive foundation for Physics, Chemistry, Mathematics, Biology.</p>
+                            <ul class="list-unstyled text-muted small">
+                                <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                <li><strong>Duration:</strong> 1 Year</li>
+                                <li><strong>Mode:</strong> Offline + Online Material</li>
+                                <li><strong>Price:</strong> ₹29,999/year</li>
+                            </ul>
+                            <div class="rating text-center mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                <span class="text-muted small"> (4.2)</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+                                <a href="#syllabus" class="btn btn-outline-primary btn-sm">View Syllabus</a>
+                                <a href="#preview" class="btn btn-outline-secondary btn-sm">Preview Material</a>
+                            </div>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" name="courses[]" value="class11-science" id="class11-science">
+                                <label class="form-check-label" for="class11-science">Select to Enroll</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Class 12 Science -->
+                    <div class="col-md-6 col-lg-4 course-item" data-category="class12">
+                        <div class="card course-card p-4">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-book course-icon"></i>
+                            </div>
+                            <h5 class="card-title text-center">Class 12 - Science Stream</h5>
+                            <p class="card-text text-muted text-center">Intensive board exam prep for Physics, Chemistry, Mathematics, Biology.</p>
+                            <ul class="list-unstyled text-muted small">
+                                <li><strong>Boards:</strong> CBSE, JAC, ICSE</li>
+                                <li><strong>Duration:</strong> 1 Year</li>
+                                <li><strong>Mode:</strong> Offline + Online Material</li>
+                                <li><strong>Price:</strong> ₹34,999/year</li>
+                            </ul>
+                            <div class="rating text-center mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted small"> (4.5)</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+                                <a href="#syllabus" class="btn btn-outline-primary btn-sm">View Syllabus</a>
+                                <a href="#preview" class="btn btn-outline-secondary btn-sm">Preview Material</a>
+                            </div>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" name="courses[]" value="class12-science" id="class12-science">
+                                <label class="form-check-label" for="class12-science">Select to Enroll</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- JEE Mains Preparation -->
+                    <div class="col-md-6 col-lg-4 course-item" data-category="entrance">
+                        <div class="card course-card p-4">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-gears course-icon"></i>
+                            </div>
+                            <h5 class="card-title text-center">JEE Mains Preparation</h5>
+                            <p class="card-text text-muted text-center">Full prep for Physics, Chemistry, Mathematics with mock tests.</p>
+                            <ul class="list-unstyled text-muted small">
+                                <li><strong>Target:</strong> Class 11/12/Dropper</li>
+                                <li><strong>Duration:</strong> 1 or 2 Years</li>
+                                <li><strong>Mode:</strong> Offline + Online Material</li>
+                                <li><strong>Price:</strong> ₹49,999/year</li>
+                            </ul>
+                            <div class="rating text-center mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                <span class="text-muted small"> (4.3)</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+                                <a href="#demo" class="btn btn-outline-primary btn-sm">View Demo Class</a>
+                                <a href="#brochure" class="btn btn-outline-secondary btn-sm">Download Brochure</a>
+                            </div>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" name="courses[]" value="jee-mains" id="jee-mains">
+                                <label class="form-check-label" for="jee-mains">Select to Enroll</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- NEET Preparation -->
+                    <div class="col-md-6 col-lg-4 course-item" data-category="entrance">
+                        <div class="card course-card p-4">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-stethoscope course-icon"></i>
+                            </div>
+                            <h5 class="card-title text-center">NEET Preparation</h5>
+                            <p class="card-text text-muted text-center">NCERT-based prep for Physics, Chemistry, Biology with tests.</p>
+                            <ul class="list-unstyled text-muted small">
+                                <li><strong>Target:</strong> Class 11/12/Dropper</li>
+                                <li><strong>Duration:</strong> 1 or 2 Years</li>
+                                <li><strong>Mode:</strong> Offline + Online Material</li>
+                                <li><strong>Price:</strong> ₹49,999/year</li>
+                            </ul>
+                            <div class="rating text-center mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span class="text-muted small"> (4.8)</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+                                <a href="#questions" class="btn btn-outline-primary btn-sm">Sample Questions</a>
+                                <a href="#toppers" class="btn btn-outline-secondary btn-sm">View Toppers</a>
+                            </div>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" name="courses[]" value="neet" id="neet">
+                                <label class="form-check-label" for="neet">Select to Enroll</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Computer Science -->
+                    <div class="col-md-6 col-lg-4 course-item" data-category="computerscience">
+                        <div class="card course-card p-4">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-code course-icon"></i>
+                            </div>
+                            <h5 class="card-title text-center">Computer Science</h5>
+                            <p class="card-text text-muted text-center">Programming, AI basics, Data Structures with projects.</p>
+                            <ul class="list-unstyled text-muted small">
+                                <li><strong>Suitable for:</strong> Class 11/12/Beginners</li>
+                                <li><strong>Duration:</strong> 6 Months - 1 Year</li>
+                                <li><strong>Mode:</strong> Offline + Online Material</li>
+                                <li><strong>Price:</strong> ₹19,999/year</li>
+                            </ul>
+                            <div class="rating text-center mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted small"> (4.6)</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+                                <a href="#syllabus" class="btn btn-outline-primary btn-sm">Download Syllabus</a>
+                                <a href="#projects" class="btn btn-outline-secondary btn-sm">See Projects</a>
+                            </div>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" name="courses[]" value="computer-science" id="computer-science">
+                                <label class="form-check-label" for="computer-science">Select to Enroll</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- Sticky Enroll Button -->
+            <div class="sticky-enroll d-none" id="enrollButton">
+                <a href="/register" class="text-white text-decoration-none">Enroll Now (<span id="selectedCount">0</span>)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center" id="registerModalLabel">Sign Up to Continue</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">Create an account using Gmail or Phone Number</p>
+                    <button type="button" class="google-btn mb-3 w-100" id="googleSignIn">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                    <button type="button" class="phone-btn mb-3 w-100" id="phoneSignIn">
+                        <i class="fas fa-mobile-alt"></i> Sign Up with Phone Number
+                    </button>
+                    <div class="phone-section otp-section mt-3">
+                        <div class="input-group mb-3">
+                            <select class="form-select country-code" id="countryCode">
+                                <option value="+91" selected>+91 (India)</option>
+                                <option value="+1">+1 (USA)</option>
+                                <option value="+44">+44 (UK)</option>
+                            </select>
+                            <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter phone number" pattern="[0-9]{10}" required>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100 mb-3" id="sendOtp">Send OTP</button>
+                    </div>
+                    <div class="otp-section mt-3" id="otpVerification">
+                        <input type="text" class="form-control mb-3" id="otpInput" placeholder="Enter OTP" required>
+                        <button type="button" class="btn btn-primary w-100" id="verifyOtp">Verify OTP</button>
+                    </div>
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                        <label class="form-check-label small" for="termsCheck">
+                            I agree to the <a href="#terms" class="text-primary">Terms & Conditions</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-muted small">Already have an account? <button class="btn btn-link p-0 text-primary" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center" id="loginModalLabel">Sign In to Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">Sign in using Google or your email and password</p>
+                    <!-- Google Sign-In -->
+                    <button type="button" class="google-btn mb-3 w-100" id="googleLogin">
+                        <i class="fab fa-google"></i> Sign In with Google
+                    </button>
+                    <!-- Email/Password Sign-In -->
+                    <form id="loginForm" class="mt-3">
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="passwordInput" placeholder="Enter your password" required>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" id="emailLogin">Sign In</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-muted small">Don't have an account? <button class="btn btn-link p-0 text-primary" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign Up</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Ready to Start Your Journey?</h2>
+            <p class="lead mb-5">Join Razwia Classes and unlock your potential with our expert-led courses.</p>
+            <button class="btn btn-light btn-lg px-5" data-bs-toggle="modal" data-bs-target="#registerModal">Enroll Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h2 class="m-0 text-white mb-3"><i class="fas fa-graduation-cap me-2"></i>Razwia Classes</h2>
+                    <p>Premier coaching institute dedicated to helping students achieve academic excellence through personalized learning.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="https://facebook.com/razwiaclasses" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/razwiaclasses" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/razwiaclasses" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/razwiaclasses" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Courses</a></li>
+                        <li class="mb-2"><a href="study-material.html" class="text-white-50">Study Material</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Courses</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">JEE Main & Advanced</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">NEET UG</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">CBSE Classes 9-12</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Olympiad Preparation</a></li>
+                        <li class="mb-2"><a href="courses.html" class="text-white-50">Crash Courses</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Gomoh, Dhanbad, Jharkhand 828401</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +91 9934341106</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@razwiaclasses.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Sat: 8AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-white-50">© 2023 Razwia Classes. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-white-50">
+                        <a href="#" class="text-white-50">Privacy Policy</a> | 
+                        <a href="#" class="text-white-50">Terms of Service</a> | 
+                        <a href="#" class="text-white-50">Refund Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <a href="https://wa.me/919934341106" class="btn btn-success rounded-circle p-3" target="_blank">
+            <i class="fab fa-whatsapp fs-4"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.course-item').forEach(item => {
+                const title = item.querySelector('.card-title').textContent.toLowerCase();
+                item.style.display = title.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.course-item').forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    item.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
+                });
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('btn-primary', 'text-white'));
+                this.classList.add('btn-primary', 'text-white');
+            });
+        });
+
+        // Enroll button and checkbox handling
+        const checkboxes = document.querySelectorAll('input[name="courses[]"]');
+        const enrollButton = document.getElementById('enrollButton');
+        const selectedCount = document.getElementById('selectedCount');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedCount = document.querySelectorAll('input[name="courses[]"]:checked').length;
+                selectedCount.textContent = checkedCount;
+                enrollButton.classList.toggle('d-none', checkedCount === 0);
+            });
+        });
+
+        // Form submission
+        document.getElementById('enrollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedCourses = Array.from(document.querySelectorAll('input[name="courses[]"]:checked'))
+                .map(checkbox => checkbox.value);
+            if (selectedCourses.length > 0) {
+                window.location.href = `/register?courses=${selectedCourses.join(',')}`;
+            } else {
+                alert('Please select at least one course to enroll.');
+            }
+        });
+
+       
+        // Register Modal Functionality
+        const phoneSignInBtn = document.getElementById('phoneSignIn');
+        const phoneSection = document.querySelector('.phone-section');
+        const otpVerification = document.getElementById('otpVerification');
+        const sendOtpBtn = document.getElementById('sendOtp');
+        const verifyOtpBtn = document.getElementById('verifyOtp');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const countryCodeSelect = document.getElementById('countryCode');
+        const otpInput = document.getElementById('otpInput');
+        const termsCheck = document.getElementById('termsCheck');
+        const registerModal = document.getElementById('registerModal');
+
+        phoneSignInBtn.addEventListener('click', () => {
+            phoneSection.style.display = 'block';
+            document.getElementById('googleSignIn').style.display = 'none';
+            phoneSignInBtn.style.display = 'none';
+        });
+
+        sendOtpBtn.addEventListener('click', () => {
+            const phone = phoneNumberInput.value;
+            const countryCode = countryCodeSelect.value;
+            const phoneRegex = /^[0-9]{10}$/;
+
+            if (!phoneRegex.test(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return;
+            }
+
+            if (!termsCheck.checked) {
+                alert('Please agree to the Terms & Conditions.');
+                return;
+            }
+
+            fetch('/send-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone: `${countryCode}${phone}` }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    phoneSection.style.display = 'none';
+                    otpVerification.style.display = 'block';
+                } else {
+                    alert('Failed to send OTP. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+
+        verifyOtpBtn.addEventListener('click', () => {
+            const otp = otpInput.value;
+            if (otp.length !== 6 || !/^\d+$/.test(otp)) {
+                alert('Please enter a valid 6-digit OTP.');
+                return;
+            }
+
+            fetch('/verify-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone: `${countryCodeSelect.value}${phoneNumberInput.value}`, otp: otp }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Welcome! You’re now registered.');
+                    bootstrap.Modal.getInstance(registerModal).hide();
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Invalid OTP. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+
+        document.getElementById('googleSignIn').addEventListener('click', () => {
+            if (!termsCheck.checked) {
+                alert('Please agree to the Terms & Conditions.');
+                return;
+            }
+
+            fetch('/google-signin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Welcome! You’re now registered.');
+                    bootstrap.Modal.getInstance(registerModal).hide();
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Google Sign-In failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+
+        // Login Modal Functionality
+        const loginModal = document.getElementById('loginModal');
+        const googleLoginBtn = document.getElementById('googleLogin');
+        const emailLoginBtn = document.getElementById('emailLogin');
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+
+        googleLoginBtn.addEventListener('click', () => {
+            // Simulate Google Sign-In (replace with actual OAuth flow)
+            fetch('/google-login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Successfully signed in!');
+                    bootstrap.Modal.getInstance(loginModal).hide();
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Google Sign-In failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+
+        emailLoginBtn.addEventListener('click', () => {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (!password || password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            // Simulate email/password login
+            fetch('/email-login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Successfully signed in!');
+                    bootstrap.Modal.getInstance(loginModal).hide();
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Invalid email or password. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
